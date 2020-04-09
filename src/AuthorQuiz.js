@@ -9,10 +9,10 @@ function Hero(props) {
   )
 }
 function Continue(props) {
-  return (
-    <di>
+  return ( 
+    <div>
 
-    </di>
+    </div>
   )
 }
 function Footer(){
@@ -26,27 +26,36 @@ function Footer(){
     </div>
   )
 }
+function Book({title}) {
+  return (
+    <div className='answer'>
+      <h4>{title}</h4>
+    </div>
+  )
+}
 function Turn({author, books}) {
   return (
     <div className='row turn' style={{backgroundColor:'white'}} >
       <div className='col-4 offset-1'>
-        <img src={author.imagUrl} alt='author' className='authorimage' />
+        <img src={author.imageUrl} alt='author' className='authorimage' />
       </div>
       <div className='col-6'>
         {books.map(title => (
-          <p>{title}</p>
+          <Book title={title} key={title} />
         ))}
       </div>
     </div>
   )
 }
-function App() {
+
+function AuthorQuiz({turnData}) {
   return (
     <div className='container-fluid'>
       <Hero />
+      <Turn {...turnData}/>
       <Footer />
     </div>
   );
 }
 
-export default App;
+export default AuthorQuiz;
